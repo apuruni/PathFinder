@@ -54,10 +54,10 @@ public class PathFinder{
             }
 
             // Get the adjacent tiles coord of the current step
-            let adjSteps: [Tile] = self.walkableAdjacentTilesCoordForTileCoord(currentStep.position)
-            for v in adjSteps {
-                var step = Step(position: v.location)
-                step.direction = v.direction;
+            let adjacentTiles: [Tile] = self.walkableAdjacentTilesCoordForTileCoord(currentStep.position)
+            for adjacentTile in adjacentTiles {
+                var step = Step(position: adjacentTile.location)
+                step.direction = adjacentTile.direction;
 
                 // Check if the step isn't already in the closed set
                 if self.spClosedSteps.contains({ $0 == step }) {

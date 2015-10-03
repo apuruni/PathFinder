@@ -5,7 +5,7 @@ public class Step : CustomStringConvertible {
     var gScore:Int
     var hScore:Int
     var parent:Step?
-    var direction: TileDirection
+    public var direction: TileDirection
     
     public init(position: CGPoint){
         self.position = position

@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  PathFinder
-//
-//  Created by Kun Wang on 10/03/2015.
-//  Copyright (c) 2015 Kun Wang. All rights reserved.
-//
-
 import UIKit
 import PathFinder
 
@@ -162,6 +154,11 @@ class ViewController: UIViewController {
             let view = UIView(frame: CGRect(origin: CGPoint(x: Int(position.x) * viewWidth + testViewGridSpan, y: Int(position.y) * viewWidth + testViewGridSpan), size: gridSize))
             view.backgroundColor = UIColor.greenColor()
             testView.addSubview(view)
+            
+            let directionLabel = UILabel(frame: view.bounds)
+            view.addSubview(directionLabel)
+            directionLabel.text = step.direction.symbol
+            
         }
     }
 

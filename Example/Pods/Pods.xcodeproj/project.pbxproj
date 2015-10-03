@@ -14,7 +14,7 @@
 		6C22A6108A605F7A9641715C8A29F7F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368EDA6EA1D64BF9F023F44E07BB7D92 /* Foundation.framework */; };
 		763F482D4D762DD9DD3E52EEA16FDA9D /* Pods-PathFinder_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 089AF2C3C248F277BB871C8EAED856DA /* Pods-PathFinder_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC64CC091BBFA65100607900 /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CC081BBFA65100607900 /* PathFinder.swift */; settings = {ASSET_TAGS = (); }; };
-		BC64CC0B1BBFA9E000607900 /* ShortestPathStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CC0A1BBFA9E000607900 /* ShortestPathStep.swift */; settings = {ASSET_TAGS = (); }; };
+		BC64CC0B1BBFA9E000607900 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CC0A1BBFA9E000607900 /* Step.swift */; settings = {ASSET_TAGS = (); }; };
 		BC64CC0D1BBFAA9400607900 /* TileDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CC0C1BBFAA9400607900 /* TileDirection.swift */; settings = {ASSET_TAGS = (); }; };
 		BC64CC0F1BBFB6F800607900 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CC0E1BBFB6F800607900 /* Tile.swift */; settings = {ASSET_TAGS = (); }; };
 		BC64CC111BBFB91C00607900 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CC101BBFB91C00607900 /* Map.swift */; settings = {ASSET_TAGS = (); }; };
@@ -77,7 +77,7 @@
 		B8671E6C761DF5635B60C8FCF99ADF8C /* Pods-PathFinder_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PathFinder_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BC64CC081BBFA65100607900 /* PathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
-		BC64CC0A1BBFA9E000607900 /* ShortestPathStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortestPathStep.swift; sourceTree = "<group>"; };
+		BC64CC0A1BBFA9E000607900 /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		BC64CC0C1BBFAA9400607900 /* TileDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDirection.swift; sourceTree = "<group>"; };
 		BC64CC0E1BBFB6F800607900 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		BC64CC101BBFB91C00607900 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				BC64CC081BBFA65100607900 /* PathFinder.swift */,
-				BC64CC0A1BBFA9E000607900 /* ShortestPathStep.swift */,
+				BC64CC0A1BBFA9E000607900 /* Step.swift */,
 				BC64CC0C1BBFAA9400607900 /* TileDirection.swift */,
 				BC64CC0E1BBFB6F800607900 /* Tile.swift */,
 				BC64CC101BBFB91C00607900 /* Map.swift */,
@@ -432,7 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC64CC0B1BBFA9E000607900 /* ShortestPathStep.swift in Sources */,
+				BC64CC0B1BBFA9E000607900 /* Step.swift in Sources */,
 				BC64CC0D1BBFAA9400607900 /* TileDirection.swift in Sources */,
 				BC64CC131BBFBFE500607900 /* Array.swift in Sources */,
 				BC64CC0F1BBFB6F800607900 /* Tile.swift in Sources */,
