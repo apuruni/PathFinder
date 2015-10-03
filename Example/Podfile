@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'PathFinder_Example', :exclusive => true do
+  pod "PathFinder", :path => "../"
+end
+
+target 'PathFinder_Tests', :exclusive => true do
+  pod "PathFinder", :path => "../"
+
+  
+end
