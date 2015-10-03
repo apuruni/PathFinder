@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="PathFinder_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +17,60 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFa-YR-JKF">
+                                <rect key="frame" x="190" y="496" width="221" height="36"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="221" id="PF8-FR-RTJ"/>
+                                    <constraint firstAttribute="height" constant="36" id="h3o-dU-t8M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Next Test Case &gt;"/>
+                                <connections>
+                                    <action selector="showNextTestCase:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3k0-MK-WpP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Case Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh7-2M-3XV">
+                                <rect key="frame" x="20" y="28" width="560" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ANb-L5-LLz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSG-Dr-Tmt">
+                                <rect key="frame" x="20" y="76" width="560" height="412"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xh7-2M-3XV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="4i6-fO-bwu"/>
+                            <constraint firstItem="cSG-Dr-Tmt" firstAttribute="top" secondItem="xh7-2M-3XV" secondAttribute="bottom" constant="8" symbolic="YES" id="C7q-mY-d0J"/>
+                            <constraint firstItem="pFa-YR-JKF" firstAttribute="top" secondItem="cSG-Dr-Tmt" secondAttribute="bottom" constant="8" symbolic="YES" id="H3g-5i-eio"/>
+                            <constraint firstItem="xh7-2M-3XV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Hcj-1E-bbo"/>
+                            <constraint firstItem="xh7-2M-3XV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="LaX-Ks-9o5"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pFa-YR-JKF" secondAttribute="bottom" constant="68" id="TaP-Cq-PGx"/>
+                            <constraint firstItem="pFa-YR-JKF" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="gkI-xL-9F5"/>
+                            <constraint firstItem="cSG-Dr-Tmt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="h2C-aU-dm1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cSG-Dr-Tmt" secondAttribute="trailing" id="uHA-qJ-t6u"/>
+                            <constraint firstItem="xh7-2M-3XV" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="uV8-zg-c2o"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="testCaseContainer" destination="cSG-Dr-Tmt" id="6cq-9C-KLj"/>
+                        <outlet property="testCaseNameLabel" destination="xh7-2M-3XV" id="BZO-Nt-aDa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="435" y="255"/>
         </scene>
     </scenes>
 </document>
