@@ -154,7 +154,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func drawSteps(steps: [ShortestPathStep]) {
+    private func drawSteps(steps: [Step]) {
         let gridSize = CGSize(width: testViewGridWidth, height: testViewGridWidth)
         for step in steps {
             let position = step.position

@@ -3,9 +3,9 @@ import Foundation
 public class PathFinder{
     var map: Map
     var lastTileDirection: TileDirection
-    var spOpenSteps: [ShortestPathStep] = [ShortestPathStep]()
-    var spClosedSteps: [ShortestPathStep] = [ShortestPathStep]()
-    var shortestPath: [ShortestPathStep] = [ShortestPathStep]()
+    var spOpenSteps: [Step] = [Step]()
+    var spClosedSteps: [Step] = [Step]()
+    var shortestPath: [Step] = [Step]()
     
     public init(map: Map) {
         self.map = map
@@ -16,7 +16,7 @@ public class PathFinder{
         return "PathFinder"
     }
     
-    public func move(fromTileCoord: CGPoint, toTileCoord: CGPoint) -> [ShortestPathStep] {
+    public func move(fromTileCoord: CGPoint, toTileCoord: CGPoint) -> [Step] {
         self.shortestPath.removeAll()
         
         // Check that there is a path to compute ;-)
@@ -29,12 +29,12 @@ public class PathFinder{
         spClosedSteps.removeAll()
 
         // Start by adding the from position to the open list
-        self.insertInOpenSteps(ShortestPathStep(position: fromTileCoord))
+        self.insertInOpenSteps(Step(position: fromTileCoord))
 
         repeat {
             // Get the lowest F cost step
             // Because the list is ordered, the first step is always the one with the lowest F cost
-            let currentStep: ShortestPathStep = self.spOpenSteps[0]
+            let currentStep: Step = self.spOpenSteps[0]
 
             // Add the current step to the closed set
             self.spClosedSteps.append(currentStep)
@@ -56,7 +56,7 @@ public class PathFinder{
             // Get the adjacent tiles coord of the current step
             let adjSteps: [Tile] = self.walkableAdjacentTilesCoordForTileCoord(currentStep.position)
             for v in adjSteps {
-                var step = ShortestPathStep(position: v.location)
+                var step = Step(position: v.location)
                 step.direction = v.direction;
 
                 // Check if the step isn't already in the closed set
@@ -111,7 +111,7 @@ public class PathFinder{
     }
     
     // Insert a path step (ShortestPathStep) in the ordered open steps list (spOpenSteps)
-    private func insertInOpenSteps(step: ShortestPathStep) {
+    private func insertInOpenSteps(step: Step) {
         let stepFScore: Int = step.fScore // Compute the step's F score
         let count: Int = self.spOpenSteps.count
         var i = 0
@@ -127,10 +127,10 @@ public class PathFinder{
     }
 
     // Go backward from a step (the final one) to reconstruct the shortest computed path
-    private func constructPathFromStep(step: ShortestPathStep) {
+    private func constructPathFromStep(step: Step) {
         self.shortestPath.removeAll()
         
-        var currentStep: ShortestPathStep? = step
+        var currentStep: Step? = step
 
         repeat {
             if currentStep!.parent != nil { // Don't add the last step which is the start position (remember we go backward, so the last one is the origin position ;-)
@@ -194,7 +194,7 @@ public class PathFinder{
     }
     
     // Compute the cost of moving from a step to an adjacent one
-    private func costToMove(fromStep: ShortestPathStep, toAdjacentStep: ShortestPathStep) -> Int {
+    private func costToMove(fromStep: Step, toAdjacentStep: Step) -> Int {
         // Because we can't move diagonally and because terrain is just walkable or unwalkable the cost is always the same.
         // But it have to be different if we can move diagonally and/or if there is swamps, hills, etc...
         return 1;

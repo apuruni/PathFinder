@@ -1,10 +1,10 @@
 import Foundation
 
-public class ShortestPathStep : CustomStringConvertible {
+public class Step : CustomStringConvertible {
     public var position:CGPoint
     var gScore:Int
     var hScore:Int
-    var parent:ShortestPathStep?
+    var parent:Step?
     var direction: TileDirection
     
     public init(position: CGPoint){
@@ -24,6 +24,6 @@ public class ShortestPathStep : CustomStringConvertible {
     }
 }
 
-func == (left: ShortestPathStep, right: ShortestPathStep) -> Bool {
+func == (left: Step, right: Step) -> Bool {
     return left.position == right.position
 }
