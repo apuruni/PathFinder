@@ -1,15 +1,15 @@
 {
   "name": "PathFinder",
   "version": "0.1.0",
-  "summary": "A short description of PathFinder.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/PathFinder",
+  "summary": "A library to solve maze path finding problem for Swift.",
+  "description": "This CocoaPod provides the ablilit to find a path for a maze.",
+  "homepage": "https://github.com/apuruni/PathFinder",
   "license": "MIT",
   "authors": {
-    "Kun Wang": "kun@fb.com"
+    "Apuruni": "apuruni@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/PathFinder.git",
+    "git": "https://github.com/apuruni/PathFinder.git",
     "tag": "0.1.0"
   },
   "platforms": {

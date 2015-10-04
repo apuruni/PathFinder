@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## PathFinder
 
-Copyright (c) 2015 Kun Wang <kun@fb.com>
+Copyright (c) 2015 Apuruni <apuruni@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

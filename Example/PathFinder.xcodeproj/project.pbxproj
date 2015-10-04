@@ -14,6 +14,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		659191F9EDCDE7F76E230347 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08882A7D170B99F030D1257E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6FFD3ED7C6076193186A563C /* Pods_PathFinder_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A0BAFA018752969FFDAED0 /* Pods_PathFinder_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		06573886B3E101762A638F14 /* PathFinder.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PathFinder.podspec; path = ../PathFinder.podspec; sourceTree = "<group>"; };
+		08882A7D170B99F030D1257E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7D4D58C7EBC23E82B3430B /* Pods-PathFinder_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PathFinder_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PathFinder_Example/Pods-PathFinder_Example.release.xcconfig"; sourceTree = "<group>"; };
 		13E8C812FEEBFB570EEEB32C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		31A0BAFA018752969FFDAED0 /* Pods_PathFinder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PathFinder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FFD3ED7C6076193186A563C /* Pods_PathFinder_Example.framework in Frameworks */,
+				659191F9EDCDE7F76E230347 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +77,7 @@
 			children = (
 				31A0BAFA018752969FFDAED0 /* Pods_PathFinder_Example.framework */,
 				3326963C5690093E540F5E9D /* Pods_PathFinder_Tests.framework */,
+				08882A7D170B99F030D1257E /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -319,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PathFinder_Example/Pods-PathFinder_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BD18AA8263973E976774101E /* Embed Pods Frameworks */ = {

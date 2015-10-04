@@ -1,6 +1,6 @@
 import Foundation
 
-public enum TileDirection{
+public enum Direction{
     case Top
     case Right
     case Bottom

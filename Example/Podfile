@@ -7,6 +7,6 @@ end
 
 target 'PathFinder_Tests', :exclusive => true do
   pod "PathFinder", :path => "../"
-
-  
 end
+
+pod 'CGRectExtensions'

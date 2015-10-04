@@ -2,7 +2,7 @@ import Foundation
 
 public class Tile {
     var location: CGPoint
-    var direction: TileDirection
+    var direction: Direction
     
     public init(location: CGPoint) {
         self.location = location

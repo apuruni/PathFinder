@@ -2,25 +2,19 @@ import Foundation
 
 public class Step : CustomStringConvertible {
     public var position:CGPoint
-    var gScore:Int
-    var hScore:Int
+    var cost:CGFloat
     var parent:Step?
-    public var direction: TileDirection
+    public var inDirection: Direction?
     
     public init(position: CGPoint){
         self.position = position
-        gScore = 0
-        hScore = 0
+        cost = 0
         parent = nil
-        direction = TileDirection.Top
-    }
-    
-    var fScore: Int {
-        return gScore + hScore
+        inDirection = nil
     }
     
     public var description :String {
-        return "Step, pos=\(position), g=\(gScore), h=\(hScore) f=\(fScore)"
+        return "Step, pos=\(position), cost=\(cost), dir=\(inDirection)"
     }
 }
 
