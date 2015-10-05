@@ -1,6 +1,6 @@
 # PathFinder
 
-[![CI Status](http://img.shields.io/travis/Kun Wang/PathFinder.svg?style=flat)](https://travis-ci.org/Kun Wang/PathFinder)
+[![CI Status](http://img.shields.io/travis/apuruni/PathFinder.svg?style=flat)](https://travis-ci.org/apuruni/PathFinder)
 [![Version](https://img.shields.io/cocoapods/v/PathFinder.svg?style=flat)](http://cocoapods.org/pods/PathFinder)
 [![License](https://img.shields.io/cocoapods/l/PathFinder.svg?style=flat)](http://cocoapods.org/pods/PathFinder)
 [![Platform](https://img.shields.io/cocoapods/p/PathFinder.svg?style=flat)](http://cocoapods.org/pods/PathFinder)
@@ -22,7 +22,7 @@ pod "PathFinder"
 
 ## Author
 
-Kun Wang, kun@fb.com
+Apuruni, apuruni@gmail.com
 
 ## License
 
