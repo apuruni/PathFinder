@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         drawMap(map);
         
         let pf = PathFinder(map: map)
-        let stepList = pf.move(testData.start, toTileCoord: testData.end)
+        let stepList = pf.findShortestSteps(testData.start, toTileCoord: testData.end)
         drawSteps(stepList)
         
         drawMark(testData.start, mark: "s")

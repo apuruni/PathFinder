@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "PathFinder"
-  s.version          = "0.1.0"
+  s.version          = "0.2.0"
   s.summary          = "A library to solve maze path finding problem for Swift."
 
 # This description is used to generate tags and improve search results.

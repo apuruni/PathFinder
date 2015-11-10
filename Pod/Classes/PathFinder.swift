@@ -18,7 +18,7 @@ public class PathFinder{
         return "PathFinder"
     }
     
-    public func move(fromTileCoord: CGPoint, toTileCoord: CGPoint) -> [Step] {
+    public func findShortestSteps(fromTileCoord: CGPoint, toTileCoord: CGPoint) -> [Step] {
         self.shortestPath.removeAll()
         
         // Check that there is a path to compute ;-)
@@ -34,8 +34,8 @@ public class PathFinder{
         self.insertInOpenSteps(Step(position: fromTileCoord))
 
         repeat {
-            print("==== loop for open list ====")
-            print("open list=\(self.spOpenSteps)")
+            // print("==== loop for open list ====")
+            // print("open list=\(self.spOpenSteps)")
             // Get the lowest F cost step
             // Because the list is ordered, the first step is always the one with the lowest F cost
             let currentStep: Step = self.spOpenSteps[0]
@@ -59,7 +59,7 @@ public class PathFinder{
             // Get the adjacent tiles coord of the current step
             let adjacentTiles: [Tile] = self.walkableAdjacentTilesCoordForTileCoord(currentStep.position)
             for adjacentTile in adjacentTiles {
-                print("==== loop for adjacent tile ====")
+                // print("==== loop for adjacent tile ====")
                 var nextStep = Step(position: adjacentTile.location)
                 let nextDirection = adjacentTile.direction;
 
@@ -75,7 +75,7 @@ public class PathFinder{
                 let index: Int? = self.spOpenSteps.indexOf({ $0 == nextStep})
 
                 if (index == nil) { // Not on the open list, so add it
-                    print("Not on the open list, so add it")
+                    // print("Not on the open list, so add it")
                     // Set the current step as the parent
                     nextStep.parent = currentStep
                     nextStep.inDirection = nextDirection
@@ -86,12 +86,12 @@ public class PathFinder{
                     // Adding it with the function which is preserving the list ordered by F score
                     self.insertInOpenSteps(nextStep)
                 } else { // Already in the open list
-                    print("Already in the open list")
+                    // print("Already in the open list")
                     nextStep = self.spOpenSteps[index!] // To retrieve the old one (which has its scores already computed ;-)
 
                     // Check to see if the G score for that step is lower if we use the current step to get there
                     if ((currentStep.cost + moveCost) < nextStep.cost) {
-                        print("has lower cost, update old step")
+                        // print("has lower cost, update old step")
                         nextStep.parent = currentStep
                         nextStep.inDirection = nextDirection
 
@@ -199,16 +199,16 @@ public class PathFinder{
         // Because we can't move diagonally and because terrain is just walkable or unwalkable the cost is always the same.
         // But it have to be different if we can move diagonally and/or if there is swamps, hills, etc...
         var cost: CGFloat = 1        
-        print("fromStep=\(fromStep), toStep=\(toAdjacentStep)")
+        // print("fromStep=\(fromStep), toStep=\(toAdjacentStep)")
 //        print("fromStep.parent=\(fromStep.parent)")
-        print("nextDirection=\(nextDirection)")
+        // print("nextDirection=\(nextDirection)")
         
         // if fromStep.direction != toAdjacentStep.direction {
         if fromStep.inDirection != nil && fromStep.inDirection != nextDirection {
             cost += TurnPenalty
         }
         
-        print("cost=\(cost)")
+        // print("cost=\(cost)")
         
         return cost
     }
