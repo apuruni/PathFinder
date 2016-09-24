@@ -1,10 +1,10 @@
 import Foundation
 
-public class Step : CustomStringConvertible {
-    public var position:CGPoint
+open class Step : CustomStringConvertible {
+    open var position:CGPoint
     var cost:CGFloat
     var parent:Step?
-    public var inDirection: Direction?
+    open var inDirection: Direction?
     
     public init(position: CGPoint){
         self.position = position
@@ -13,7 +13,7 @@ public class Step : CustomStringConvertible {
         inDirection = nil
     }
     
-    public var description :String {
+    open var description :String {
         return "Step, pos=\(position), cost=\(cost), dir=\(inDirection)"
     }
 }

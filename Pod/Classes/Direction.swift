@@ -1,20 +1,20 @@
 import Foundation
 
 public enum Direction{
-    case Top
-    case Right
-    case Bottom
-    case Left
+    case top
+    case right
+    case bottom
+    case left
     
     public var symbol: String {
         switch self {
-        case .Top:
+        case .top:
             return "↑"
-        case .Right:
+        case .right:
             return "→"
-        case .Bottom:
+        case .bottom:
             return "↓"
-        case .Left:
+        case .left:
             return "←"
         }
     }

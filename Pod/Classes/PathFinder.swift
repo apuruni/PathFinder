@@ -1,6 +1,6 @@
 import Foundation
 
-public class PathFinder{
+open class PathFinder{
     let TurnPenalty: CGFloat = 0.001
     
     var map: Map
@@ -11,14 +11,14 @@ public class PathFinder{
     
     public init(map: Map) {
         self.map = map
-        lastTileDirection = .Top
+        lastTileDirection = .top
     }
     
-    public func getName() -> String{
+    open func getName() -> String{
         return "PathFinder"
     }
     
-    public func findShortestSteps(fromTileCoord: CGPoint, toTileCoord: CGPoint) -> [Step] {
+    open func findShortestSteps(_ fromTileCoord: CGPoint, toTileCoord: CGPoint) -> [Step] {
         self.shortestPath.removeAll()
         
         // Check that there is a path to compute ;-)
@@ -44,7 +44,7 @@ public class PathFinder{
             self.spClosedSteps.append(currentStep)
 
             // Remove it from the open list
-            self.spOpenSteps.removeAtIndex(0)
+            self.spOpenSteps.remove(at: 0)
 
             // If the currentStep is the desired tile coordinate, we are done!
             if (currentStep.position == toTileCoord) {
@@ -64,7 +64,7 @@ public class PathFinder{
                 let nextDirection = adjacentTile.direction;
 
                 // Check if the step isn't already in the closed set
-                if self.spClosedSteps.contains({ $0 == nextStep }) {
+                if self.spClosedSteps.contains(where: { $0 == nextStep }) {
                     continue; // Ignore it
                 }
 
@@ -72,7 +72,7 @@ public class PathFinder{
                 let moveCost = self.costToMove(currentStep, toAdjacentStep:nextStep, nextDirection: nextDirection)
 
                 // Check if the step is already in the open list
-                let index: Int? = self.spOpenSteps.indexOf({ $0 == nextStep})
+                let index: Int? = self.spOpenSteps.index(where: { $0 == nextStep})
 
                 if (index == nil) { // Not on the open list, so add it
                     // print("Not on the open list, so add it")
@@ -102,7 +102,7 @@ public class PathFinder{
                         // the insert function which is preserving the list ordered by F score
 
                         // Now we can removing it from the list without be afraid that it can be released
-                        self.spOpenSteps.removeAtIndex(index!)
+                        self.spOpenSteps.remove(at: index!)
 
                         // Re-insert it with the function which is preserving the list ordered by F score
                         self.insertInOpenSteps(nextStep)
@@ -115,11 +115,12 @@ public class PathFinder{
     }
     
     // Insert a path step (ShortestPathStep) in the ordered open steps list (spOpenSteps)
-    private func insertInOpenSteps(step: Step) {
+    fileprivate func insertInOpenSteps(_ step: Step) {
         let cost: CGFloat = step.cost // Compute the step's F score
         let count: Int = self.spOpenSteps.count
         var i = 0
-        for (; i < count; i++) {
+        for j in 0 ..< count {
+            i = j
             if cost <= self.spOpenSteps[i].cost { // If the step's F score is lower or equals to the step at index i
                 // Then we found the index at which we have to insert the new step
                 // Basically we want the list sorted by F score
@@ -127,30 +128,30 @@ public class PathFinder{
             }
         }
         // Insert the new step at the determined index to preserve the F score ordering
-        self.spOpenSteps.insert(step, atIndex: i)
+        self.spOpenSteps.insert(step, at: i)
     }
 
     // Go backward from a step (the final one) to reconstruct the shortest computed path
-    private func constructPathFromStep(step: Step) {
+    fileprivate func constructPathFromStep(_ step: Step) {
         self.shortestPath.removeAll()
         
         var currentStep: Step? = step
 
         repeat {
-            self.shortestPath.insert(currentStep!, atIndex: 0) // Always insert at index 0 to reverse the path
+            self.shortestPath.insert(currentStep!, at: 0) // Always insert at index 0 to reverse the path
             currentStep = currentStep!.parent // Go backward
         }
         while (currentStep != nil);   // Until there is no more parents
     }
     
-    private func walkableAdjacentTilesCoordForTileCoord(tileCoord: CGPoint) -> [Tile] {
+    fileprivate func walkableAdjacentTilesCoordForTileCoord(_ tileCoord: CGPoint) -> [Tile] {
         var tempWalkableList = [Tile]()
 
         // Top
         var p = CGPoint(x: tileCoord.x, y: tileCoord.y - 1)
         if self.isValidTileCoord(p) && !self.isWallAtTileCoord(p) {
             let tile = Tile(location: p)
-            tile.direction = Direction.Top
+            tile.direction = Direction.top
             tempWalkableList.append(tile)
         }
 
@@ -158,7 +159,7 @@ public class PathFinder{
         p = CGPoint(x: tileCoord.x - 1, y: tileCoord.y)
         if self.isValidTileCoord(p) && !self.isWallAtTileCoord(p) {
             let tile = Tile(location: p)
-            tile.direction = Direction.Left
+            tile.direction = Direction.left
             tempWalkableList.append(tile)
         }
 
@@ -166,7 +167,7 @@ public class PathFinder{
         p = CGPoint(x: tileCoord.x, y: tileCoord.y + 1);
         if self.isValidTileCoord(p) && !self.isWallAtTileCoord(p) {
             let tile = Tile(location: p)
-            tile.direction = Direction.Bottom
+            tile.direction = Direction.bottom
             tempWalkableList.append(tile)
         }
 
@@ -174,14 +175,14 @@ public class PathFinder{
         p = CGPoint(x: tileCoord.x + 1, y: tileCoord.y);
         if self.isValidTileCoord(p) && !self.isWallAtTileCoord(p) {
             let tile = Tile(location: p)
-            tile.direction = Direction.Right
+            tile.direction = Direction.right
             tempWalkableList.append(tile)
         }
 
         return tempWalkableList
     }
     
-    private func isValidTileCoord(p: CGPoint) -> Bool{
+    fileprivate func isValidTileCoord(_ p: CGPoint) -> Bool{
         if (p.x >= 0 && Int(p.x) < map.width
             && p.y >= 0 && Int(p.y) < map.height) {
             return true
@@ -190,12 +191,12 @@ public class PathFinder{
         }
     }
 
-    private func isWallAtTileCoord(p: CGPoint) -> Bool {
+    fileprivate func isWallAtTileCoord(_ p: CGPoint) -> Bool {
         return map.isWallAt(p)
     }
     
     // Compute the cost of moving from a step to an adjacent one
-    private func costToMove(fromStep: Step, toAdjacentStep: Step, nextDirection: Direction) -> CGFloat {
+    fileprivate func costToMove(_ fromStep: Step, toAdjacentStep: Step, nextDirection: Direction) -> CGFloat {
         // Because we can't move diagonally and because terrain is just walkable or unwalkable the cost is always the same.
         // But it have to be different if we can move diagonally and/or if there is swamps, hills, etc...
         var cost: CGFloat = 1        
