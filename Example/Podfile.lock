@@ -1,17 +1,16 @@
 PODS:
-  - CGRectExtensions (2.0)
-  - PathFinder (0.1.0)
+  - PathFinder (0.2.0)
 
 DEPENDENCIES:
-  - CGRectExtensions
   - PathFinder (from `../`)
 
 EXTERNAL SOURCES:
   PathFinder:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  CGRectExtensions: 67fa367a91d537bc2fcdd97069a66262777d1412
-  PathFinder: fe6332c458930e450739f59ec7802c4266f034b5
+  PathFinder: 461a3f88b0daa08da1c243943e4d1c85b8d375b4
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: a7a5f62159092ed5f54b2377566f322979c9d455
+
+COCOAPODS: 1.0.1

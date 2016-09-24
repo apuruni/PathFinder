@@ -1,6 +1,5 @@
 import UIKit
 import PathFinder
-import CGRectExtensions
 
 struct TestCaseData {
     var title: String
@@ -32,8 +31,8 @@ class ViewController: UIViewController {
         showTestCase()
     }
 
-    @IBAction func showNextTestCase(sender: AnyObject) {
-        currentTestCaseIndex++
+    @IBAction func showNextTestCase(_ sender: AnyObject) {
+        currentTestCaseIndex += 1
         currentTestCaseIndex %= testCases.count
         
         showTestCase()
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func showTestCase() {
+    fileprivate func showTestCase() {
         for subView in testCaseContainer.subviews {
             subView.removeFromSuperview()
         }
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
         drawMark(testData.end, mark: "e")
     }
     
-    private func initAllTestCases() {
+    fileprivate func initAllTestCases() {
         testCases.append(TestCaseData(
             title: "Basic",
             matrix: [
@@ -125,74 +124,80 @@ class ViewController: UIViewController {
             ))
     }
 
-    private func initTestView(map: Map){
+    fileprivate func initTestView(_ map: Map){
         let viewWidth: CGFloat = testViewGridWidth * CGFloat(map.width) + testViewGridSpan * (CGFloat(map.width) + 1)
         let size = CGSize(width: viewWidth, height: viewWidth)
         testView = UIView(frame: CGRect(origin: CGPoint(x: testViewLeft, y: testViewTop), size: size))
-        testView.backgroundColor = UIColor.lightGrayColor()
+        testView.backgroundColor = UIColor.lightGray
         testCaseContainer.addSubview(testView)
     }
     
-    private func drawMap(map: Map) {
+    fileprivate func drawMap(_ map: Map) {
         // draw map
-        for (var y = 0; y < map.height; y++) {
-            for (var x = 0; x < map.width; x++) {
+        for y in 0 ..< map.height {
+            for x in 0 ..< map.width {
                 let view = UIView(frame: CGRect(origin: CGPoint(x: CGFloat(x) * testViewCellWidthWithSpan + testViewGridSpan, y: CGFloat(y) * testViewCellWidthWithSpan + testViewGridSpan), size: testViewCellSize))
                 testView.addSubview(view)
                 if map.matrix[y][x] == Map.WALL {
-                    view.backgroundColor = UIColor.blackColor()
+                    view.backgroundColor = UIColor.black
                 } else {
-                    view.backgroundColor = UIColor.whiteColor()
+                    view.backgroundColor = UIColor.white
                 }
             }
         }
     }
     
-    private func drawSteps(steps: [Step]) {
+    fileprivate func drawSteps(_ steps: [Step]) {
         for step in steps {
             let position = step.position
             
             let cellRect = CGRect(origin: CGPoint(x: position.x * testViewCellWidthWithSpan + testViewGridSpan, y: position.y * testViewCellWidthWithSpan + testViewGridSpan), size: testViewCellSize)
             let view = UIView(frame: cellRect)
 
-            view.backgroundColor = UIColor.greenColor()
+            view.backgroundColor = UIColor.green
             testView.addSubview(view)
             
-            var labelRect = view.bounds
-            labelRect.size = testViewMarkSize * 0.8
+            let labelRect = CGRect(x: view.bounds.origin.x + testViewMarkSize.width * 0.5,
+                                   y: view.bounds.origin.y + testViewMarkSize.height * 0.5,
+                               width: testViewMarkSize.width * 0.8,
+                               height: testViewMarkSize.height * 0.8)
             
-            let directionLabel = UILabel(frame: labelRect.offsetBy(testViewMarkSize * 0.5))
-            directionLabel.textAlignment = .Center
+            let directionLabel = UILabel(frame: labelRect)
+            directionLabel.textAlignment = .center
             directionLabel.adjustsFontSizeToFitWidth = true;
             view.addSubview(directionLabel)
             directionLabel.text = step.inDirection?.symbol
         }
     }
     
-    private func drawMark(position: CGPoint, mark: String) {
+    fileprivate func drawMark(_ position: CGPoint, mark: String) {
         let cellRect = CGRect(origin: CGPoint(x: position.x * testViewCellWidthWithSpan + testViewGridSpan, y: position.y * testViewCellWidthWithSpan + testViewGridSpan), size: testViewMarkSize)
         let view = UIView(frame: cellRect)
         testView.addSubview(view)
         
-        var labelRect = view.bounds
-        labelRect.size = testViewMarkSize * 0.8
+        let labelRect = CGRect(x: view.bounds.origin.x, y: view.bounds.origin.y,
+                               width: testViewMarkSize.width * 0.8, height: testViewMarkSize.height * 0.8)
         
         let directionLabel = UILabel(frame: labelRect)
-        directionLabel.textAlignment = .Center
+        directionLabel.textAlignment = .center
         view.addSubview(directionLabel)
         directionLabel.text = mark
     }
     
-    private var testViewCellSize: CGSize {
+    fileprivate var testViewCellSize: CGSize {
         return CGSize(width: testViewGridWidth, height: testViewGridWidth)
     }
     
-    private var testViewMarkSize: CGSize {
-        return testViewCellSize * 0.5
+    fileprivate var testViewMarkSize: CGSize {
+        return CGSize(width: testViewCellSize.width * 0.5, height: testViewCellSize.height * 0.5)
     }
     
-    private var testViewCellWidthWithSpan: CGFloat {
+    fileprivate var testViewCellWidthWithSpan: CGFloat {
         return testViewGridWidth + testViewGridSpan
+    }
+    
+    fileprivate func resizeRect(rect: CGRect, scale: CGFloat) -> CGRect {
+        return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.width * scale, height: rect.size.height * scale)
     }
 
 }
